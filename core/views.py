@@ -4,39 +4,7 @@ from datetime import datetime
 
 import random
 
-# Create your views here.
+from django.http import HttpResponse
+
 def index(request):
-    now = datetime.now()
-    context = {
-        'current_date': now
-    }
-    return render(request, 'core/index.html', context)
-
-
-def select(request):
-    context = {
-    }
-    return render(request, 'core/select.html', context)
-
-
-def result(request):
-    chosen = int(request.GET['number'])
-
-    result = []
-    if chosen >= 1 and chosen <= 45:
-        result.append(chosen)
-
-    box = []
-
-    for i in range(0, 45) :
-        if chosen != i+1:
-            box.append(i+1);
-        random.shuffle(box)
-
-    while len(result) < 6:
-        result.append(box.pop())
-
-    context = {
-        'number': result
-    }
-    return render(request, 'core/result.html', context)
+    return HttpResponse("거시경제 자산 관리 서비스 'Tide' 백엔드 시작!")
