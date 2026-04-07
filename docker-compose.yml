@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16  # 가장 안정적인 16 버전 추천
+    container_name: tide_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: sayu        # DB 사용자명
+      POSTGRES_PASSWORD: java # DB 비밀번호
+      POSTGRES_DB: tide_db        # 생성할 DB 이름
+    ports:
+      - "5432:5432"
+    volumes:
+      - tide_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  tide_postgres_data:                 # 컨테이너를 꺼도 데이터가 유지되도록 볼륨 설정
