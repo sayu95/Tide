@@ -17,6 +17,9 @@ Including another URLconf
 from django.urls import include, path
 
 urlpatterns = [
+    # 공통 메인 페이지나 기본 기능
     path('', include('core.urls')),
+
+    # 지표 관련 기능은 무조건 /indicators/ 뒤에 오도록 격리
     path('indicators/', include('indicators.urls')),
 ]

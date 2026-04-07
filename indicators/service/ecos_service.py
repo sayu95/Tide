@@ -49,7 +49,6 @@ class EcosService:
         )
 
         response = self.client.get(path)
-        print(f"DEBUG URL: {response.url}")  # 아까 터미널에 이건 잘 찍혔죠?
+        print(f"DEBUG URL: {response.url}")
 
-        # ★ 이게 빠져있을 겁니다! ★
         return response
