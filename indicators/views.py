@@ -18,7 +18,7 @@ def sync_indicator_view(request):
 
     try:
         # 1. 서비스 호출
-        result = service.sync_indicator(code, start, end)
+        result = service.fetch_and_save_interest_rate(code, start, end)
 
         # 2. 결과값 존재 여부 확인 (자바의 if (result != null) 과 동일)
         if result and result[0]:
