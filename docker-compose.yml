@@ -4,9 +4,9 @@ services:
     container_name: tide_postgres
     restart: always
     environment:
-      POSTGRES_USER: sayu        # DB 사용자명
-      POSTGRES_PASSWORD: java # DB 비밀번호
-      POSTGRES_DB: tide_db        # 생성할 DB 이름
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
