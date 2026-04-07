@@ -17,6 +17,12 @@ class Indicator(models.Model):
     # default='월': 한국은행 데이터는 월 단위가 많으므로 기본값을 '월'로 설정.
     period = models.CharField(max_length=10, default='월')
 
+    # 5. 금리 숫자 저장 (실수형)
+    value = models.FloatField(null=True, blank=True)
+
+    # 6. # '202312' 같은 날짜 저장
+    date = models.CharField(max_length=20, null=True, blank=True)
+
     def __str__(self):
         # 자바의 toString() 메서드와 동일한 역할.
         # 어드민 페이지나 로그에서 객체를 볼 때 'id' 대신 '이름'이 보이게 함.
