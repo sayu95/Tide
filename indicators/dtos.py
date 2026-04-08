@@ -16,7 +16,7 @@ class BokInterestRateDto:
         API의 raw한 딕셔너리 데이터를 DTO 객체로 변환 (Factory Method)
         """
         return cls(
-            name=row.get('STAT_NAME'),
+            name=row.get('ITEM_NAME1'),
             value=float(row.get('DATA_VALUE', 0)),
             unit=row.get('UNIT_NAME'),
             date=row.get('TIME')

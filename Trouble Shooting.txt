@@ -10,5 +10,6 @@ docker-compose up -d
 
 -Python self 개념:
 
+-factory method: 객체 생성을 new라는 키워드(기계적인 명령)이 아니라, 의미있는 '이름'을 가진 메서드에게 맡기는 것
 
 

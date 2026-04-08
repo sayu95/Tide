@@ -3,6 +3,7 @@ from django.conf import settings
 
 from ..models import Indicator
 from ..dtos import BokInterestRateDto
+from pprint import pprint
 
 class EcosService:
     def __init__(self):
@@ -27,6 +28,8 @@ class EcosService:
         path = f"/api/StatisticSearch/{self.api_key}/json/kr/1/1/{stat_code}/D/{start_date}/{end_date}"
         response = self.client.get(path)
         data = response.json()
+
+        pprint(data)
 
         dto = BokInterestRateDto.from_api_row(data["StatisticSearch"]["row"][-1])
 
