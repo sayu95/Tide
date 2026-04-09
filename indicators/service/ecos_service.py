@@ -36,6 +36,7 @@ class EcosService:
         # 3. DB 저장 (JPA의 save() 혹은 update_or_create() 역할)
         obj, created = Indicator.objects.update_or_create(
             code=stat_code,
+            date=dto.date,
             defaults={
                 'name': dto.name,
                 'value': dto.value,
