@@ -1,37 +1,25 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 # indicators/views.py
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .decorators import handle_view_exceptions
 from .service.ecos_service import EcosService
-from django.http import JsonResponse
 
-
-# indicators/views.py
+@api_view(['GET'])
+@handle_view_exceptions
 def sync_indicator_view(request):
-    print("--- View Start ---")
+    print("--- View Start (Full History Sync) ---")
     service = EcosService()
 
-    code = request.GET.get('code', '722Y001')
-    start = request.GET.get('start', '202301')
-    end = request.GET.get('end', '202312')
+    # 1. 1999년부터 전수 조사를 수행하는 서비스 메서드 호출
+    # 이 메서드는 내부적으로 19990507 ~ 오늘까지를 긁어오도록 짜여 있습니다.
+    total, saved = service.fetch_all_base_rate_history()
 
-    try:
-        # 1. 서비스 호출
-        result = service.fetch_and_save_interest_rate(code, start, end)
-
-        # 2. 결과값 존재 여부 확인 (자바의 if (result != null) 과 동일)
-        if result and result[0]:
-            obj = result[0]
-            return JsonResponse({
-                "status": "success",
-                "name": obj.name,
-                "message": "Data saved successfully"
-            }, status=200)  # 200을 명시적으로 넣어보세요.
-
-        # 3. 데이터가 없는 경우
-        return JsonResponse({"status": "error", "message": "No Data from BOK"}, status=200)
-
-    except Exception as e:
-        print(f"!!! CRITICAL ERROR: {str(e)}")
-        return JsonResponse({"status": "error", "message": str(e)}, status=500)
+    # 2. 결과 리턴
+    return Response({
+        "status": "SUCCESS",
+        "payload": {
+            "total_count": total,
+            "newly_saved_count": saved,
+            "message": "1999년 제공일부터 오늘까지 전수 동기화 완료"
+        }
+    })

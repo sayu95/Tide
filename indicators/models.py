@@ -4,7 +4,7 @@ from django.db import models
 
 class Indicator(models.Model):
     # 1. 지표 식별 코드 (ex: 한국은행 ECOS의 '010Y002')
-    code = models.CharField(max_length=50, unique=True)
+    code = models.CharField(max_length=50)
 
     # 2. 지표의 이름 (예: '국고채 3년', 소비자물가지수')
     name = models.CharField(max_length=100)
@@ -22,6 +22,11 @@ class Indicator(models.Model):
 
     # 6. # '202312' 같은 날짜 저장
     date = models.CharField(max_length=20, null=True, blank=True)
+
+    class Meta:
+        # 3. 자바의 복합키 설정과 같습니다.
+        # "코드와 날짜가 모두 같은 데이터"만 중복으로 처리합니다.
+        unique_together = (('code', 'date'),)
 
     def __str__(self):
         # 자바의 toString() 메서드와 동일한 역할.
