@@ -7,7 +7,6 @@ from .service.ecos_service import EcosService
 @api_view(['GET'])
 @handle_view_exceptions
 def sync_indicator_view(request):
-    print("--- View Start (Full History Sync) ---")
     service = EcosService()
 
     # 1. 1999년부터 전수 조사를 수행하는 서비스 메서드 호출
