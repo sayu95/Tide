@@ -5,7 +5,7 @@ from django.conf import settings
 from ..models import Indicator
 from ..dtos import BokInterestRateDto
 
-class EcosService:
+class IndicatorsService:
     def __init__(self):
         # 자바의 생성자(@Autowired 필드 주입 등)와 같은 역할입니다.
         # 여기서 self.api_key를 만들어줘야 아래 메서드에서 쓸 수 있습니다.
