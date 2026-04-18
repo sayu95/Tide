@@ -2,7 +2,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from service.indicators_service import IndicatorsService
+from .service.indicators_service import IndicatorsService
 from .decorators import handle_view_exceptions
 
 @api_view(['GET'])

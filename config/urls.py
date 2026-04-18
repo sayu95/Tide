@@ -22,4 +22,5 @@ urlpatterns = [
 
     # 지표 관련 기능은 무조건 /indicators/ 뒤에 오도록 격리
     path('indicators/', include('indicators.urls')),
+    path('api/users/', include('users.urls')),
 ]
