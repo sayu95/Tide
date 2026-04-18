@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16  # 가장 안정적인 16 버전 추천
+    image: postgres:16
     container_name: tide_postgres
     restart: always
     environment:
@@ -13,4 +13,4 @@ services:
       - tide_postgres_data:/var/lib/postgresql/data
 
 volumes:
-  tide_postgres_data:                 # 컨테이너를 꺼도 데이터가 유지되도록 볼륨 설정
+  tide_postgres_data:
