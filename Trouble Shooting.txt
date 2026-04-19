@@ -8,7 +8,7 @@ python manage.py makemigrations & migrate로 DB에 테이블을 생성합니다.
 >> 검증이 필요할때는 serializers
 >> 검증이 필요 없을때 dataclass
 
-3. Service (비즈니스 로직) 🌟
+3. Service (비즈니스 로직)
 자바의 Service: service/ 폴더에 실제 로직을 짭니다.
 (장고 기본 구조에는 없지만, Slim Serializer 패턴의 핵심!)
 User.objects.create_user() 같은 ORM 조작과 예외(raise) 처리를 담당합니다.
