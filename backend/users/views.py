@@ -33,3 +33,12 @@ def login_view(request):
 
     return Response({"message": f"{user.nickname}님 환영합니다!"
                      }, status=200)
+
+@api_view(['GET'])
+def test_connection(request):
+    # 자바의 Map이나 DTO를 리턴하는 느낌입니다!
+    return Response({
+        "status": "success",
+        "message": "장고 서버에 연결되었습니다! 🚀",
+        "data": "Java Developer, Welcome to Django!"
+    })
