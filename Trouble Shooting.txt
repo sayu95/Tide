@@ -66,3 +66,9 @@ Python: raise AuthenticationFailed("Fail")
 Cross-Origin Resource Sharing (CORS) 통신 설정
 django-cors-headers 패키지 설치 및 미들웨어(CorsMiddleware) 등록.
 CORS_ALLOWED_ORIGINS 설정에 리액트 개발 서버 주소를 명시하여 통행 허가증 발급.
+
+장고 테이블 세트,하는 일 (기능),자바/스프링 비유
+auth_*,"유저 그룹, 권한, 기본 사용자 정보 저장","UserDetails, GrantedAuthority"
+account_*,"이메일 인증 상태, 가입 일자, 로그인 횟수 관리",Account 엔티티 + 이메일 인증 로직
+authtoken_*,API 통신용 신분증(Token) 저장,Token 테이블 또는 Redis 저장소
+socialaccount_*,구글/카카오 계정 연동 정보 저장,"OAuth2User, Social Login Provider 정보"
